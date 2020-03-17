@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+    server:
+        container_name: parkpay-server
+        image: gheo1/docker-parkpay-server
+        ports:
+            - '8080:8080'
+    
+    client:
+        container_name: parkpay-client
+        image: gheo1/docker-parkpay-client
+        ports:
+            - '3000:3000'
