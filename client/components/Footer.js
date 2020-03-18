@@ -1,22 +1,22 @@
 
 export default function Footer() {
     return(
-        <footer class="footer bg-light">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+        <footer className="footer bg-light">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-6 h-100 text-center text-lg-left my-auto">
  
             </div>
-            <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
-              <ul class="list-inline mb-0">
-                <li class="list-inline-item mr-3">
+            <div className="col-lg-6 h-100 text-center text-lg-right my-auto">
+              <ul className="list-inline mb-0">
+                <li className="list-inline-item mr-3">
                   <a href="https://www.linkedin.com/in/gyucheon-heo-07a007157/">
-                    <i class="fab fa-linkedin fa-2x fa-fw"></i>
+                    <i className="fab fa-linkedin fa-2x fa-fw"></i>
                   </a>
                 </li>
-                <li class="list-inline-item mr-3">
+                <li className="list-inline-item mr-3">
                   <a href="https://github.com/gyucheonheo/">
-                    <i class="fab fa-github fa-2x fa-fw"></i>
+                    <i className="fab fa-github fa-2x fa-fw"></i>
                   </a>
                 </li>
  

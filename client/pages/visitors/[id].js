@@ -9,7 +9,7 @@ const Visitor = props => (
     <div className="col-md-7">
       <h1>{props.visitor.visitor.name},{props.visitor.visitor.email}</h1>
       <h2> Orders</h2>
-    <table class="table">
+    <table className="table">
       <thead>
         <tr>
           <th scope="col">Order Id</th>
@@ -32,10 +32,10 @@ const Visitor = props => (
                   </td>
                   <td>
                     <Link href="/orders/[id]" as={`/orders/${order.oid}`}>
-                      <a role="button" class="btn btn-success">View</a>
+                      <a role="button" className="btn btn-success">View</a>
                     </Link>
                     <span/>
-                    <button type="button" class="btn btn-danger">Delete</button>
+                    <button type="button" className="btn btn-danger">Delete</button>
                   </td>
                 </tr>
             ))}
@@ -43,7 +43,7 @@ const Visitor = props => (
       </tbody>
     </table>
     <h2> Notes</h2>
-    <table class="table">
+    <table className="table">
       <thead>
         <tr>
           <th scope="col">Note Id</th>
@@ -70,10 +70,10 @@ const Visitor = props => (
                   </td>
                   <td>
                     <Link href="/notes/[id]" as={`/notes/${note.nid}`}>
-                      <a role="button" class="btn btn-success">View</a>
+                      <a role="button" className="btn btn-success">View</a>
                     </Link>
                     <span/>
-                    <button type="button" class="btn btn-danger">Delete</button>
+                    <button type="button" className="btn btn-danger">Delete</button>
                   </td>
                 </tr>
             ))}
