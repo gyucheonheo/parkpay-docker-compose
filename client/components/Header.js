@@ -1,4 +1,12 @@
 import Link from 'next/link'
+import Router from 'next/router';
+import NProgress from 'nprogress';
+Router.events.on('routeChangeStart', url => {
+  console.log(`Loading: ${url}`)
+  NProgress.start()
+})
+Router.events.on('routeChangeComplete', () => NProgress.done())
+Router.events.on('routeChangeError', () => NProgress.done())
 
 const linkStyle = {
   marginRight: 15
@@ -7,12 +15,12 @@ const linkStyle = {
 export default function Header() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container">
+      <div className="container">
       <Link href="/">
         <a className="navbar-brand">Payment System</a>
       </Link>
-      <button className="navbar-toggler" type="button" data-toggle="collapse" 
-      data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+      <button className="navbar-toggler" type="button" data-toggle="collapse"
+      data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
       aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
      </button>
