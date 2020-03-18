@@ -18,7 +18,7 @@ export default class Createorder extends React.Component {
         expiration_date_month: '',
         expirmation_date_year:'',
         zip:0,
-        errorMessage:'',
+        errors:{},
         parks_data: []
     }
 
@@ -62,7 +62,7 @@ export default class Createorder extends React.Component {
         .catch(err => {
             if(err.response.status == 400){
                 this.setState({
-                    errorMessage : err.response.data.title
+                    errors : err.response.data.detail
                 })
             }
         })
@@ -128,13 +128,14 @@ export default class Createorder extends React.Component {
                     <h3>Create New Order</h3>
                     <form onSubmit={this.handleSubmit}>
                     <div className="form-group">
-                        <label htmlFor="exampleinputemail1">park id</label>
+                        <label htmlFor="exampleinputemail1">Park</label>
                         <select className="form-control" name="pid" value={this.state.pid} onChange={this.handleChange} placeholder="Choose Park">
                             <option key="default" default>Select</option>
                             {this.state.parks_data.map(park => (
                                 <option key={park.pid} value={park.pid}>{park.location_info.name},{park.location_info.region}</option>
                             ))}
                         </select>
+                  
                         <small id="emailhelp" className="form-text text-muted">required</small>
                     </div>
                     <h4> Vehicle Information</h4>
@@ -145,11 +146,13 @@ export default class Createorder extends React.Component {
                             {list_of_states.map(abbr => 
                                 (<option key={abbr} value={abbr}>{abbr}</option>))}
                         </select>
+                        {this.state.errors.state &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.state}</small>}
                         <small id="emailhelp" className="form-text text-muted">required.</small>
                     </div>
                     <div className="form-group">
                         <label htmlFor="exampleinputemail1">plate</label>
                         <input className="form-control" type="text" name="plate" value={this.state.plate} onChange={this.handleChange} />
+                        {this.state.errors.plate &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.plate}</small>}
                         <small id="emailhelp" className="form-text text-muted">required.</small>
                     </div>
                     <div className="form-group">
@@ -160,6 +163,7 @@ export default class Createorder extends React.Component {
                             <option value="rv">RV</option>
                             <option value="motorcycle">Motorcycle</option>
                         </select>
+                        {this.state.errors.type &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.type}</small>}
                         <small id="emailhelp" className="form-text text-muted">required.</small>
                     </div>
                     <h4> Visitor Information</h4>
@@ -171,6 +175,7 @@ export default class Createorder extends React.Component {
                     <div className="form-group">
                         <label htmlFor="exampleinputemail1">E-mail</label>
                         <input className="form-control" type="text" name="email" value={this.state.email} onChange={this.handleChange} />
+                        {this.state.errors.email &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.email}</small>}
                         <small id="emailhelp" className="form-text text-muted">required.</small>
                    </div>
 
@@ -178,6 +183,7 @@ export default class Createorder extends React.Component {
                     <div className="form-group">
                         <label htmlFor="inputpassword4">Card Number</label>
                         <input className="form-control" type="text" name="card" value={this.state.card} onChange={this.handleChange} />
+                        {this.state.errors.card &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.card}</small>}
                         <small id="emailhelp" className="form-text text-muted">required.</small>
                     </div>
 
@@ -185,30 +191,33 @@ export default class Createorder extends React.Component {
                         <div className="form-group col-md-6">
                             <label htmlFor="exampleinputemail1">Name on Card</label>
                             <input className="form-control" type="text" name="name_on_card" value={this.state.name_on_card} onChange={this.handleChange} />
+                            {this.state.errors.name_on_card &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.name_on_card}</small>}
                             <small id="emailhelp" className="form-text text-muted">required</small>
                         </div>
                             <div className="form-group col-md-3">
                                 <label htmlFor="exampleInputEmail1">Exp Date-Month</label>
                                 <input className="form-control" type="text" name="expiration_date_month" value={this.state.expiration_date_month} onChange={this.handleChange} />
+                                {this.state.errors.expiration_date &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.expiration_date}</small>}
                                 <small id="emailHelp" className="form-text text-muted">Required</small>
+                                
                             </div>
                             <div className="form-group col-md-3">
                                 <label htmlFor="exampleInputEmail1">Exp Date-Year</label>
                                 <input className="form-control" type="text" name="expiration_date_year" value={this.state.expiration_date_year} onChange={this.handleChange} />
+                                {this.state.errors.expiration_date &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.expiration_date}</small>}
                                 <small id="emailHelp" className="form-text text-muted">Required</small>
                             </div>
+
                     </div>
 
                     <div className="form-row">
                         <div className="form-group col-md-6">
                             <label htmlFor="exampleInputEmail1">zip</label>
                             <input className="form-control" type="text" name="zip" value={this.state.zip} onChange={this.handleChange} />
+                            {this.state.errors.zip &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.zip}</small>}
                             <small id="emailHelp" className="form-text text-muted">Required</small>
                         </div>
                     </div>
-                   { this.state.errorMessage &&
-                        <Alert type="warning" text={this.state.errorMessage} />
-                    }
                     <input type="submit" className="btn btn-primary btn-lg btn-block" value="Place Order"></input>
                     </form>
                 </div> 

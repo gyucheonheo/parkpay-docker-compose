@@ -48,7 +48,7 @@ const Orders = (props) => (
                         </td>
                       </tr>
                   ))}
-      
+
             </tbody>
           </table>
           </div>

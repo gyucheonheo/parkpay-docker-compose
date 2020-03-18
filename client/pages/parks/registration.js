@@ -1,7 +1,6 @@
 import React from 'react'
 import Layout from '../../components/MyLayout'
 import Sidebar from '../../components/Sidebar';
-import Alert from '../../components/Alert'
 import axios from 'axios'
 import Router, { useRouter } from 'next/router';
 
@@ -20,7 +19,7 @@ export default class Registration extends React.Component {
         car_out_state :0,
         rv_in_state :0,
         rv_out_state : 0,
-        errorMessage:''
+        errorsDetail:{} 
     }
 
     handleChange = event => {
@@ -55,8 +54,10 @@ export default class Registration extends React.Component {
         .catch(err => {
             if(err.response.status == 400){
                 this.setState({
-                    errorMessage : err.response.data.title
-                })
+                    errorsDetail : err.response.data.detail
+                }, () => {
+                    console.log(this.state.errorsDetail);
+                }) 
             }
         })
     }
@@ -71,26 +72,32 @@ export default class Registration extends React.Component {
                     <div className="form-group">
                         <label htmlFor="exampleInputEmail1">Park Name</label>
                         <input className="form-control" type="text" name="name" value={this.state.name} onChange={this.handleChange} />
-                        <small id="emailHelp" className="form-text text-muted">Required</small>
-                    </div>
+                        {this.state.errorsDetail.name &&  <small id="emailHelp" className="form-text text-danger">{this.state.errorsDetail.name}</small>}
+                    </div> 
                     <div className="form-group">
                         <label htmlFor="exampleInputEmail1">Region</label>
                         <input className="form-control" type="text" name="region" value={this.state.region} onChange={this.handleChange} />
+                        {this.state.errorsDetail.region &&  <small id="emailHelp" className="form-text text-danger">{this.state.errorsDetail.region}</small>}
                         <small id="emailHelp" className="form-text text-muted">Optional</small>
                     </div>
                     <div className="form-group">
                         <label htmlFor="exampleInputEmail1">Address</label>
                         <input className="form-control" type="text" name="address" value={this.state.address} onChange={this.handleChange} />
+                        {this.state.errorsDetail.address &&  <small id="emailHelp" className="form-text text-danger">{this.state.errorsDetail.address}</small>}
                         <small id="emailHelp" className="form-text text-muted">Required</small>
                     </div>
                     <div className="form-group">
                         <label htmlFor="exampleInputEmail1">Phone</label>
                         <input className="form-control" type="text" name="phone" value={this.state.phone} onChange={this.handleChange} />
+                        {this.state.errorsDetail.address &&  <small id="emailHelp" className="form-text text-danger">{this.state.errorsDetail.address}</small>}
+
                         <small id="emailHelp" className="form-text text-muted">Optional</small>
                     </div>
                     <div className="form-group">
                         <label htmlFor="exampleInputEmail1">Web</label>
                         <input className="form-control" type="text" name="web" value={this.state.web} onChange={this.handleChange} />
+                        {this.state.errorsDetail.address &&  <small id="emailHelp" className="form-text text-danger">{this.state.errorsDetail.address}</small>}
+ 
                         <small id="emailHelp" className="form-text text-muted">Required.</small>
                     </div>
                     <h4> Geographical Information</h4>
@@ -98,11 +105,15 @@ export default class Registration extends React.Component {
                         <div className="form-group col-md-6">
                         <label htmlFor="inputEmail4">Latitude</label>
                         <input className="form-control" type="text" name="lat" value={this.state.lat} onChange={this.handleChange} />
+                        {this.state.errorsDetail.address &&  <small id="emailHelp" className="form-text text-danger">{this.state.errorsDetail.address}</small>}
+
                         <small id="emailHelp" className="form-text text-muted">Required.</small>
                         </div>
                         <div className="form-group col-md-6">
                         <label htmlFor="inputPassword4">Longitude</label>
                         <input className="form-control" type="text" name="lng" value={this.state.lng} onChange={this.handleChange} />
+                        {this.state.errorsDetail.address &&  <small id="emailHelp" className="form-text text-danger">{this.state.errorsDetail.address}</small>}
+
                         <small id="emailHelp" className="form-text text-muted">Required.</small>
                         </div>
                     </div>
@@ -111,11 +122,15 @@ export default class Registration extends React.Component {
                         <div className="form-group col-md-6">
                             <label htmlFor="exampleInputEmail1">Motorcycle(In-state)</label>
                             <input className="form-control" type="text" name="motorcycle_in_state" value={this.state.motorcycle_in_state} onChange={this.handleChange} />
+                            {this.state.errorsDetail.address &&  <small id="emailHelp" className="form-text text-danger">{this.state.errorsDetail.address}</small>}
+
                             <small id="emailHelp" className="form-text text-muted">Required</small>
                         </div>
                         <div className="form-group col-md-6">
                             <label htmlFor="exampleInputEmail1">Motorcycle(Out-state)</label>
                             <input className="form-control" type="text" name="motorcycle_out_state" value={this.state.motorcycle_out_state} onChange={this.handleChange} />
+                            {this.state.errorsDetail.address &&  <small id="emailHelp" className="form-text text-danger">{this.state.errorsDetail.address}</small>}
+
                             <small id="emailHelp" className="form-text text-muted">Required</small>
                         </div>
                     </div>
@@ -124,11 +139,15 @@ export default class Registration extends React.Component {
                         <div className="form-group col-md-6">
                             <label htmlFor="exampleInputEmail1">Car(In-state)</label>
                             <input className="form-control" type="text" name="car_in_state" value={this.state.car_in_state} onChange={this.handleChange} />
+                            {this.state.errorsDetail.address &&  <small id="emailHelp" className="form-text text-danger">{this.state.errorsDetail.address}</small>}
+
                             <small id="emailHelp" className="form-text text-muted">Required</small>
                         </div>
                         <div className="form-group col-md-6">
                             <label htmlFor="exampleInputEmail1">Car(Out-state)</label>
                             <input className="form-control" type="text" name="car_out_state" value={this.state.car_out_state} onChange={this.handleChange} />
+                            {this.state.errorsDetail.address &&  <small id="emailHelp" className="form-text text-danger">{this.state.errorsDetail.address}</small>}
+
                             <small id="emailHelp" className="form-text text-muted">Required</small>
                         </div>
                     </div>
@@ -137,17 +156,17 @@ export default class Registration extends React.Component {
                         <div className="form-group col-md-6">
                             <label htmlFor="exampleInputEmail1">RV(In-state)</label>
                             <input className="form-control" type="text" name="rv_in_state" value={this.state.rv_in_state} onChange={this.handleChange} />
+                            {this.state.errorsDetail.address &&  <small id="emailHelp" className="form-text text-danger">{this.state.errorsDetail.address}</small>}
+
                             <small id="emailHelp" className="form-text text-muted">Required</small>
                         </div>
                         <div className="form-group col-md-6">
                             <label htmlFor="exampleInputEmail1">RV(Out-state)</label>
                             <input className="form-control" type="text" name="rv_out_state" value={this.state.rv_out_state} onChange={this.handleChange} />
+                           {this.state.errorsDetail.address &&  <small id="emailHelp" className="form-text text-danger">{this.state.errorsDetail.address}</small>}
                             <small id="emailHelp" className="form-text text-muted">Required</small>
                         </div>
                     </div>
-                    { this.state.errorMessage &&
-                        <Alert type="warning" text={this.state.errorMessage} />
-                    }
                     <input type="submit" className="btn btn-primary btn-lg btn-block" value="Add Park"></input>
                     </form>
                 </div> 
