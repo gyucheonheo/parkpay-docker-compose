@@ -11,15 +11,15 @@ export default class Search extends React.Component {
 
     render(){
         return(               
-            <div class="card my-4">
-            <h5 class="card-header">Search</h5>
-            <div class="card-body">
-              <div class="input-group">
+            <div className="card my-4">
+            <h5 className="card-header">Search</h5>
+            <div className="card-body">
+              <div className="input-group">
 
-                    <input type="text" class="form-control" name="input" value={this.state.input} onChange={this.handleChange} placeholder="Search for..." />
-                    <span class="input-group-btn">
+                    <input type="text" className="form-control" name="input" value={this.state.input} onChange={this.handleChange} placeholder="Search for..." />
+                    <span className="input-group-btn">
                     <Link href="/search/[keyword]" as={`/search/${this.state.input}`}>
-                        <a role="button" class="btn btn-secondary">Go!</a>
+                        <a role="button" className="btn btn-secondary">Go!</a>
                     </Link>
                     </span>
 
