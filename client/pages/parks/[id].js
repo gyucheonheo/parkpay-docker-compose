@@ -14,11 +14,11 @@ const Post = props => (
       <li>Phone : {props.park.location_info.phone}</li> 
     </ul>
     <h4>Payment Information</h4>
-    <table class="table">
+    <table className="table">
       <thead>
         <th scope="col">Type</th>
         <th scope="col">In-state</th>
-        <th scople="col">Out-state</th>
+        <th scope="col">Out-state</th>
       </thead>
       <tbody>
         <tr>

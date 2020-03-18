@@ -19,7 +19,7 @@ export default class Registration extends React.Component {
         car_out_state :0,
         rv_in_state :0,
         rv_out_state : 0,
-        errorsDetail:{} 
+        errors:{} 
     }
 
     handleChange = event => {
@@ -54,9 +54,7 @@ export default class Registration extends React.Component {
         .catch(err => {
             if(err.response.status == 400){
                 this.setState({
-                    errorsDetail : err.response.data.detail
-                }, () => {
-                    console.log(this.state.errorsDetail);
+                    errors : err.response.data.detail
                 }) 
             }
         })
@@ -72,31 +70,31 @@ export default class Registration extends React.Component {
                     <div className="form-group">
                         <label htmlFor="exampleInputEmail1">Park Name</label>
                         <input className="form-control" type="text" name="name" value={this.state.name} onChange={this.handleChange} />
-                        {this.state.errorsDetail.name &&  <small id="emailHelp" className="form-text text-danger">{this.state.errorsDetail.name}</small>}
+                        {this.state.errors.name &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.name}</small>}
                     </div> 
                     <div className="form-group">
                         <label htmlFor="exampleInputEmail1">Region</label>
                         <input className="form-control" type="text" name="region" value={this.state.region} onChange={this.handleChange} />
-                        {this.state.errorsDetail.region &&  <small id="emailHelp" className="form-text text-danger">{this.state.errorsDetail.region}</small>}
+                        {this.state.errors.region &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.region}</small>}
                         <small id="emailHelp" className="form-text text-muted">Optional</small>
                     </div>
                     <div className="form-group">
                         <label htmlFor="exampleInputEmail1">Address</label>
                         <input className="form-control" type="text" name="address" value={this.state.address} onChange={this.handleChange} />
-                        {this.state.errorsDetail.address &&  <small id="emailHelp" className="form-text text-danger">{this.state.errorsDetail.address}</small>}
+                        {this.state.errors.address &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.address}</small>}
                         <small id="emailHelp" className="form-text text-muted">Required</small>
                     </div>
                     <div className="form-group">
                         <label htmlFor="exampleInputEmail1">Phone</label>
                         <input className="form-control" type="text" name="phone" value={this.state.phone} onChange={this.handleChange} />
-                        {this.state.errorsDetail.address &&  <small id="emailHelp" className="form-text text-danger">{this.state.errorsDetail.address}</small>}
+                        {this.state.errors.phone &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.phone}</small>}
 
                         <small id="emailHelp" className="form-text text-muted">Optional</small>
                     </div>
                     <div className="form-group">
                         <label htmlFor="exampleInputEmail1">Web</label>
                         <input className="form-control" type="text" name="web" value={this.state.web} onChange={this.handleChange} />
-                        {this.state.errorsDetail.address &&  <small id="emailHelp" className="form-text text-danger">{this.state.errorsDetail.address}</small>}
+                        {this.state.errors.web &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.web}</small>}
  
                         <small id="emailHelp" className="form-text text-muted">Required.</small>
                     </div>
@@ -105,14 +103,14 @@ export default class Registration extends React.Component {
                         <div className="form-group col-md-6">
                         <label htmlFor="inputEmail4">Latitude</label>
                         <input className="form-control" type="text" name="lat" value={this.state.lat} onChange={this.handleChange} />
-                        {this.state.errorsDetail.address &&  <small id="emailHelp" className="form-text text-danger">{this.state.errorsDetail.address}</small>}
+                        {this.state.errors.lat &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.lat}</small>}
 
                         <small id="emailHelp" className="form-text text-muted">Required.</small>
                         </div>
                         <div className="form-group col-md-6">
                         <label htmlFor="inputPassword4">Longitude</label>
                         <input className="form-control" type="text" name="lng" value={this.state.lng} onChange={this.handleChange} />
-                        {this.state.errorsDetail.address &&  <small id="emailHelp" className="form-text text-danger">{this.state.errorsDetail.address}</small>}
+                        {this.state.errors.lng &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.lng}</small>}
 
                         <small id="emailHelp" className="form-text text-muted">Required.</small>
                         </div>
@@ -122,14 +120,14 @@ export default class Registration extends React.Component {
                         <div className="form-group col-md-6">
                             <label htmlFor="exampleInputEmail1">Motorcycle(In-state)</label>
                             <input className="form-control" type="text" name="motorcycle_in_state" value={this.state.motorcycle_in_state} onChange={this.handleChange} />
-                            {this.state.errorsDetail.address &&  <small id="emailHelp" className="form-text text-danger">{this.state.errorsDetail.address}</small>}
+                            {this.state.errors.motorcycle_in_state &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.motorcycle_in_state}</small>}
 
                             <small id="emailHelp" className="form-text text-muted">Required</small>
                         </div>
                         <div className="form-group col-md-6">
                             <label htmlFor="exampleInputEmail1">Motorcycle(Out-state)</label>
                             <input className="form-control" type="text" name="motorcycle_out_state" value={this.state.motorcycle_out_state} onChange={this.handleChange} />
-                            {this.state.errorsDetail.address &&  <small id="emailHelp" className="form-text text-danger">{this.state.errorsDetail.address}</small>}
+                            {this.state.errors.motorcycle_out_state &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.motorcycle_out_state}</small>}
 
                             <small id="emailHelp" className="form-text text-muted">Required</small>
                         </div>
@@ -139,14 +137,14 @@ export default class Registration extends React.Component {
                         <div className="form-group col-md-6">
                             <label htmlFor="exampleInputEmail1">Car(In-state)</label>
                             <input className="form-control" type="text" name="car_in_state" value={this.state.car_in_state} onChange={this.handleChange} />
-                            {this.state.errorsDetail.address &&  <small id="emailHelp" className="form-text text-danger">{this.state.errorsDetail.address}</small>}
+                            {this.state.errors.car_in_state &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.car_in_state}</small>}
 
                             <small id="emailHelp" className="form-text text-muted">Required</small>
                         </div>
                         <div className="form-group col-md-6">
                             <label htmlFor="exampleInputEmail1">Car(Out-state)</label>
                             <input className="form-control" type="text" name="car_out_state" value={this.state.car_out_state} onChange={this.handleChange} />
-                            {this.state.errorsDetail.address &&  <small id="emailHelp" className="form-text text-danger">{this.state.errorsDetail.address}</small>}
+                            {this.state.errors.car_out_state &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.car_out_state}</small>}
 
                             <small id="emailHelp" className="form-text text-muted">Required</small>
                         </div>
@@ -156,14 +154,14 @@ export default class Registration extends React.Component {
                         <div className="form-group col-md-6">
                             <label htmlFor="exampleInputEmail1">RV(In-state)</label>
                             <input className="form-control" type="text" name="rv_in_state" value={this.state.rv_in_state} onChange={this.handleChange} />
-                            {this.state.errorsDetail.address &&  <small id="emailHelp" className="form-text text-danger">{this.state.errorsDetail.address}</small>}
+                            {this.state.errors.rv_in_state &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.rv_in_state}</small>}
 
                             <small id="emailHelp" className="form-text text-muted">Required</small>
                         </div>
                         <div className="form-group col-md-6">
                             <label htmlFor="exampleInputEmail1">RV(Out-state)</label>
                             <input className="form-control" type="text" name="rv_out_state" value={this.state.rv_out_state} onChange={this.handleChange} />
-                           {this.state.errorsDetail.address &&  <small id="emailHelp" className="form-text text-danger">{this.state.errorsDetail.address}</small>}
+                           {this.state.errors.rv_out_state &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.rv_out_state}</small>}
                             <small id="emailHelp" className="form-text text-muted">Required</small>
                         </div>
                     </div>

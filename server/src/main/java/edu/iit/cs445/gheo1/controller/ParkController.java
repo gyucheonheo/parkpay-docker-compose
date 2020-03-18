@@ -81,7 +81,7 @@ public class ParkController {
       v.isLocationValid(linfoObj, errors);
       v.isPaymentValid(pinfoObj, errors);
 
-      if(!errors.isJsonNull()){
+      if(errors.entrySet().size() !=0){
         errorMessage.addProperty("type", "localhost:8080/parkpay");
         errorMessage.addProperty("title", "Your request didn't pass the validation");
         errorMessage.add("detail", errors);

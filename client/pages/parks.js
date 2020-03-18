@@ -64,7 +64,6 @@ const Parks = props => (
 Parks.getInitialProps = async function() {
   const res = await fetch('http://localhost:8080/parkpay/parks');
   const data = await res.json();
-  console.log(data.parks ? 'Hello' : data.parks)
 
   return {
     parks: data

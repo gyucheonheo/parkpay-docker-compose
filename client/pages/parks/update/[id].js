@@ -1,7 +1,6 @@
 import React from 'react'
 import Sidebar from '../../../components/Sidebar';
 import Layout from '../../../components/MyLayout';
-import Alert from '../../../components/Alert';
 import fetch from 'isomorphic-unfetch';
 import axios from 'axios'
 import Router from 'next/router';
@@ -48,7 +47,7 @@ export default class UpdatePark extends React.Component {
         car_out_state :0,
         rv_in_state :0,
         rv_out_state : 0,
-        errorMessage:''
+        errors: {}
     }
 
     handleChange = event => {
@@ -83,7 +82,7 @@ export default class UpdatePark extends React.Component {
         .catch(err => {
             if(err.response.status == 400){
                 this.setState({
-                    errorMessage : err.response.data.title
+                    errors : err.response.data.detail
                 })
             }
         })
@@ -97,85 +96,103 @@ export default class UpdatePark extends React.Component {
                 <h1> Update the park</h1>
                 <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Park Name</label>
-                    <input className="form-control" type="text" name="name" value={this.state.name} onChange={this.handleChange} />
-                    <small id="emailHelp" className="form-text text-muted">Required</small>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Region</label>
-                    <input className="form-control" type="text" name="region" value={this.state.region} onChange={this.handleChange} />
-                    <small id="emailHelp" className="form-text text-muted">Optional</small>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Address</label>
-                    <input className="form-control" type="text" name="address" value={this.state.address} onChange={this.handleChange} />
-                    <small id="emailHelp" className="form-text text-muted">Required</small>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Phone</label>
-                    <input className="form-control" type="text" name="phone" value={this.state.phone} onChange={this.handleChange} />
-                    <small id="emailHelp" className="form-text text-muted">Optional</small>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Web</label>
-                    <input className="form-control" type="text" name="web" value={this.state.web} onChange={this.handleChange} />
-                    <small id="emailHelp" className="form-text text-muted">Required.</small>
-                </div>
-                <h2> Geographical Information</h2>
-                <div className="form-row">
-                    <div className="form-group col-md-6">
-                    <label htmlFor="inputEmail4">Latitude</label>
-                    <input className="form-control" type="text" name="lat" value={this.state.lat} onChange={this.handleChange} />
-                    <small id="emailHelp" className="form-text text-muted">Required.</small>
+                        <label htmlFor="exampleInputEmail1">Park Name</label>
+                        <input className="form-control" type="text" name="name" value={this.state.name} onChange={this.handleChange} />
+                        {this.state.errors.name &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.name}</small>}
+                    </div> 
+                    <div className="form-group">
+                        <label htmlFor="exampleInputEmail1">Region</label>
+                        <input className="form-control" type="text" name="region" value={this.state.region} onChange={this.handleChange} />
+                        {this.state.errors.region &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.region}</small>}
+                        <small id="emailHelp" className="form-text text-muted">Optional</small>
                     </div>
-                    <div className="form-group col-md-6">
-                    <label htmlFor="inputPassword4">Longitude</label>
-                    <input className="form-control" type="text" name="lng" value={this.state.lng} onChange={this.handleChange} />
-                    <small id="emailHelp" className="form-text text-muted">Required.</small>
-                    </div>
-                </div>
-                <h2> Payment Information</h2>
-                <div className="form-row">
-                    <div className="form-group col-md-6">
-                        <label htmlFor="exampleInputEmail1">Motorcycle(In-state)</label>
-                        <input className="form-control" type="text" name="motorcycle_in_state" value={this.state.motorcycle_in_state} onChange={this.handleChange} />
+                    <div className="form-group">
+                        <label htmlFor="exampleInputEmail1">Address</label>
+                        <input className="form-control" type="text" name="address" value={this.state.address} onChange={this.handleChange} />
+                        {this.state.errors.address &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.address}</small>}
                         <small id="emailHelp" className="form-text text-muted">Required</small>
                     </div>
-                    <div className="form-group col-md-6">
-                        <label htmlFor="exampleInputEmail1">Motorcycle(Out-state)</label>
-                        <input className="form-control" type="text" name="motorcycle_out_state" value={this.state.motorcycle_out_state} onChange={this.handleChange} />
-                        <small id="emailHelp" className="form-text text-muted">Required</small>
-                    </div>
-                </div>
+                    <div className="form-group">
+                        <label htmlFor="exampleInputEmail1">Phone</label>
+                        <input className="form-control" type="text" name="phone" value={this.state.phone} onChange={this.handleChange} />
+                        {this.state.errors.phone &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.phone}</small>}
 
-                <div className="form-row">
-                    <div className="form-group col-md-6">
-                        <label htmlFor="exampleInputEmail1">Car(In-state)</label>
-                        <input className="form-control" type="text" name="car_in_state" value={this.state.car_in_state} onChange={this.handleChange} />
-                        <small id="emailHelp" className="form-text text-muted">Required</small>
+                        <small id="emailHelp" className="form-text text-muted">Optional</small>
                     </div>
-                    <div className="form-group col-md-6">
-                        <label htmlFor="exampleInputEmail1">Car(Out-state)</label>
-                        <input className="form-control" type="text" name="car_out_state" value={this.state.car_out_state} onChange={this.handleChange} />
-                        <small id="emailHelp" className="form-text text-muted">Required</small>
+                    <div className="form-group">
+                        <label htmlFor="exampleInputEmail1">Web</label>
+                        <input className="form-control" type="text" name="web" value={this.state.web} onChange={this.handleChange} />
+                        {this.state.errors.web &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.web}</small>}
+ 
+                        <small id="emailHelp" className="form-text text-muted">Required.</small>
                     </div>
-                </div>
+                    <h4> Geographical Information</h4>
+                    <div className="form-row">
+                        <div className="form-group col-md-6">
+                        <label htmlFor="inputEmail4">Latitude</label>
+                        <input className="form-control" type="text" name="lat" value={this.state.lat} onChange={this.handleChange} />
+                        {this.state.errors.lat &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.lat}</small>}
 
-                <div className="form-row">
-                    <div className="form-group col-md-6">
-                        <label htmlFor="exampleInputEmail1">RV(In-state)</label>
-                        <input className="form-control" type="text" name="rv_in_state" value={this.state.rv_in_state} onChange={this.handleChange} />
-                        <small id="emailHelp" className="form-text text-muted">Required</small>
+                        <small id="emailHelp" className="form-text text-muted">Required.</small>
+                        </div>
+                        <div className="form-group col-md-6">
+                        <label htmlFor="inputPassword4">Longitude</label>
+                        <input className="form-control" type="text" name="lng" value={this.state.lng} onChange={this.handleChange} />
+                        {this.state.errors.lng &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.lng}</small>}
+
+                        <small id="emailHelp" className="form-text text-muted">Required.</small>
+                        </div>
                     </div>
-                    <div className="form-group col-md-6">
-                        <label htmlFor="exampleInputEmail1">RV(Out-state)</label>
-                        <input className="form-control" type="text" name="rv_out_state" value={this.state.rv_out_state} onChange={this.handleChange} />
-                        <small id="emailHelp" className="form-text text-muted">Required</small>
+                    <h4> Payment Information</h4>
+                    <div className="form-row">
+                        <div className="form-group col-md-6">
+                            <label htmlFor="exampleInputEmail1">Motorcycle(In-state)</label>
+                            <input className="form-control" type="text" name="motorcycle_in_state" value={this.state.motorcycle_in_state} onChange={this.handleChange} />
+                            {this.state.errors.motorcycle_in_state &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.motorcycle_in_state}</small>}
+
+                            <small id="emailHelp" className="form-text text-muted">Required</small>
+                        </div>
+                        <div className="form-group col-md-6">
+                            <label htmlFor="exampleInputEmail1">Motorcycle(Out-state)</label>
+                            <input className="form-control" type="text" name="motorcycle_out_state" value={this.state.motorcycle_out_state} onChange={this.handleChange} />
+                            {this.state.errors.motorcycle_out_state &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.motorcycle_out_state}</small>}
+
+                            <small id="emailHelp" className="form-text text-muted">Required</small>
+                        </div>
                     </div>
-                </div>
-                { this.state.errorMessage &&
-                    <Alert type="warning" text={this.state.errorMessage} />
-                }
+
+                    <div className="form-row">
+                        <div className="form-group col-md-6">
+                            <label htmlFor="exampleInputEmail1">Car(In-state)</label>
+                            <input className="form-control" type="text" name="car_in_state" value={this.state.car_in_state} onChange={this.handleChange} />
+                            {this.state.errors.car_in_state &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.car_in_state}</small>}
+
+                            <small id="emailHelp" className="form-text text-muted">Required</small>
+                        </div>
+                        <div className="form-group col-md-6">
+                            <label htmlFor="exampleInputEmail1">Car(Out-state)</label>
+                            <input className="form-control" type="text" name="car_out_state" value={this.state.car_out_state} onChange={this.handleChange} />
+                            {this.state.errors.car_out_state &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.car_out_state}</small>}
+
+                            <small id="emailHelp" className="form-text text-muted">Required</small>
+                        </div>
+                    </div>
+
+                    <div className="form-row">
+                        <div className="form-group col-md-6">
+                            <label htmlFor="exampleInputEmail1">RV(In-state)</label>
+                            <input className="form-control" type="text" name="rv_in_state" value={this.state.rv_in_state} onChange={this.handleChange} />
+                            {this.state.errors.rv_in_state &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.rv_in_state}</small>}
+
+                            <small id="emailHelp" className="form-text text-muted">Required</small>
+                        </div>
+                        <div className="form-group col-md-6">
+                            <label htmlFor="exampleInputEmail1">RV(Out-state)</label>
+                            <input className="form-control" type="text" name="rv_out_state" value={this.state.rv_out_state} onChange={this.handleChange} />
+                           {this.state.errors.rv_out_state &&  <small id="emailHelp" className="form-text text-danger">{this.state.errors.rv_out_state}</small>}
+                            <small id="emailHelp" className="form-text text-muted">Required</small>
+                        </div>
+                    </div>
                 <input type="submit" className="btn btn-primary btn-lg btn-block" value="Update Park"></input>
                 </form>
                 </div>

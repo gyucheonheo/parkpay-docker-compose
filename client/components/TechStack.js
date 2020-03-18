@@ -58,7 +58,7 @@ export default function TechStack(){
                   <i className="fab fa-bootstrap m-auto fa-5x text-primary"></i>
                 </div>
                 <h3>Bootstrap</h3>
-                <p className="lead mb-0">Docker simplifies and accelerates your workflow, while giving developers the freedom to innovate with their choice of tools, application stacks, and deployment environments for each project.</p>
+                <p className="lead mb-0">Bootstrap is an open source toolkit for developing with HTML, CSS, and JS. Quickly prototype your ideas or build your entire app with our Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful plugins built on jQuery. </p>
               </div>
             </div>
           </div>
