@@ -1,3 +1,5 @@
+package edu.iit.cs445.gheo1;
+
 import java.util.List;
 
 import static org.junit.Assert.*;

@@ -24,7 +24,7 @@ import javax.ws.rs.core.*;
 public class ParkController {
     private ParkBoundary bi = new ParkManager();
     Parse parse = new Parse();
-	Validation v = new Validation();
+	  Validation v = new Validation();
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
@@ -33,42 +33,30 @@ public class ParkController {
     	JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();
 
     	JsonObject linfoObj = jsonObject.get("location_info").getAsJsonObject();
-    	JsonObject errorMessage = new JsonObject();
-		String error = v.isLocationValid(linfoObj);
-		if( !error.equals("ok")) {
-
-	    	errorMessage.addProperty("type", "localhost:8080/ParkService");
-	    	errorMessage.addProperty("title", "Your request didn't pass the validation");
-	    	errorMessage.addProperty("detail", error);
-	    	errorMessage.addProperty("status", 400);
-	    	errorMessage.addProperty("instance", "/parks");
-
-			return Response.status(Response.Status.BAD_REQUEST).entity(gson.toJson(errorMessage)).build();
-		}
-
     	JsonObject pinfoObj = jsonObject.get("payment_info").getAsJsonObject();
-    	error = v.isPaymentValid(pinfoObj);
-		if( !error.equals("ok")) {
+      JsonObject errorMessage = new JsonObject();
+      JsonObject errors = new JsonObject();
+      v.isLocationValid(linfoObj, errors);
+      v.isPaymentValid(pinfoObj, errors);
 
-	    	errorMessage.addProperty("type", "localhost:8080/ParkService");
-	    	errorMessage.addProperty("title", "Your request didn't pass the validation");
-	    	errorMessage.addProperty("detail", error);
-	    	errorMessage.addProperty("status", 400);
-	    	errorMessage.addProperty("instance", "/parks");
+      if(errors.entrySet().size() != 0){
+        errorMessage.addProperty("type", "localhost:8080/parkpay");
+        errorMessage.addProperty("title", "Your request didn't pass the validation");
+        errorMessage.add("detail", errors);
+        errorMessage.addProperty("status", 400);
+        errorMessage.addProperty("instance", "/parks");
+        return Response.status(Response.Status.BAD_REQUEST).entity(gson.toJson(errorMessage)).build();
+      }
 
-	    	return Response.status(Response.Status.BAD_REQUEST).entity(gson.toJson(errorMessage)).build();
-		}
-
-    	LocationInfo lInfo = parse.ParseLocationInfo(linfoObj);
-
+		  LocationInfo lInfo = parse.ParseLocationInfo(linfoObj);
     	PaymentInfo pInfo = parse.ParsePaymentInfo(pinfoObj);
-
 
     	String pid = bi.createPark(lInfo, pInfo);
     	JsonObject res = new JsonObject();
     	res.addProperty("pid", pid);
 
     	String s = gson.toJson(res);
+
     	return Response.status(Response.Status.CREATED).entity(s).build();
     }
 
@@ -84,36 +72,23 @@ public class ParkController {
     	JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();
 
     	JsonObject linfoObj = jsonObject.get("location_info").getAsJsonObject();
-    	JsonObject errorMessage = new JsonObject();
-
-		String error = v.isLocationValid(linfoObj);
-		if( !error.equals("ok")) {
-
-	    	errorMessage.addProperty("type", "localhost:8080/ParkService");
-	    	errorMessage.addProperty("title", "Your request didn't pass the validation");
-	    	errorMessage.addProperty("detail", error);
-	    	errorMessage.addProperty("status", 400);
-	    	errorMessage.addProperty("instance", "/parks/"+pid);
-
-			return Response.status(Response.Status.BAD_REQUEST).entity(gson.toJson(errorMessage)).build();
-		}
-
     	JsonObject pinfoObj = jsonObject.get("payment_info").getAsJsonObject();
-    	error = v.isPaymentValid(pinfoObj);
-		if( !error.equals("ok")) {
+    	JsonObject errorMessage = new JsonObject();
+      JsonObject errors = new JsonObject();
+      LocationInfo lInfo = parse.ParseLocationInfo(linfoObj);
+      PaymentInfo pInfo = parse.ParsePaymentInfo(pinfoObj);
 
-	    	errorMessage.addProperty("type", "localhost:8080/ParkService");
-	    	errorMessage.addProperty("title", "Your request didn't pass the validation");
-	    	errorMessage.addProperty("detail", error);
-	    	errorMessage.addProperty("status", 400);
-	    	errorMessage.addProperty("instance", "/parks/"+pid);
+      v.isLocationValid(linfoObj, errors);
+      v.isPaymentValid(pinfoObj, errors);
 
-	    	return Response.status(Response.Status.BAD_REQUEST).entity(gson.toJson(errorMessage)).build();
-		}
-
-    	LocationInfo lInfo = parse.ParseLocationInfo(linfoObj);
-
-    	PaymentInfo pInfo = parse.ParsePaymentInfo(pinfoObj);
+      if(!errors.isJsonNull()){
+        errorMessage.addProperty("type", "localhost:8080/parkpay");
+        errorMessage.addProperty("title", "Your request didn't pass the validation");
+        errorMessage.add("detail", errors);
+        errorMessage.addProperty("status", 400);
+        errorMessage.addProperty("instance", "/parks");
+        return Response.status(Response.Status.BAD_REQUEST).entity(gson.toJson(errorMessage)).build();
+      }
 
     	bi.updateParkByPid(pid, lInfo, pInfo);
 

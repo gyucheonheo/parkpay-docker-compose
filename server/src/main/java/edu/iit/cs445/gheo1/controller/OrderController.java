@@ -70,27 +70,18 @@ public class OrderController {
 			return Response.status(Response.Status.NOT_FOUND).entity("pid not found : " + pid).build();
 		}
 		JsonObject errorMessage = new JsonObject();
-
-		String error = v.isVehicleValid(vehicleObj);
-		if( !error.equals("ok")) {
-	    	errorMessage.addProperty("type", "localhost:8080/ParkService");
-	    	errorMessage.addProperty("title", "Your request didn't pass the validation");
-	    	errorMessage.addProperty("detail", error);
-	    	errorMessage.addProperty("status", 400);
-	    	errorMessage.addProperty("instance", "/orders");
-
-	    	return Response.status(Response.Status.BAD_REQUEST).entity(gson.toJson(errorMessage)).build();
-		}
-		error = v.isVisitorValid(visitorObj);
-		if( !error.equals("ok")) {
-	    	errorMessage.addProperty("type", "localhost:8080/ParkService");
-	    	errorMessage.addProperty("title", "Your request didn't pass the validation");
-	    	errorMessage.addProperty("detail", error);
-	    	errorMessage.addProperty("status", 400);
-	    	errorMessage.addProperty("instance", "/orders");
-
-	    	return Response.status(Response.Status.BAD_REQUEST).entity(gson.toJson(errorMessage)).build();
-		}
+		JsonObject errors = new JsonObject();
+		v.isVehicleValid(vehicleObj, errors);
+		v.isVisitorValid(visitorObj, errors);
+		
+		if(errors.entrySet().size() != 0){
+          errorMessage.addProperty("type", "localhost:8080/parkpay");
+          errorMessage.addProperty("title", "Your request didn't pass the validation");
+          errorMessage.add("detail", errors);
+          errorMessage.addProperty("status", 400);
+          errorMessage.addProperty("instance", "/orders");
+          return Response.status(Response.Status.BAD_REQUEST).entity(gson.toJson(errorMessage)).build();
+        }
 
 		Vehicle vehicle = parse.ParseVehicle(vehicleObj);
 		Visitor visitor = parse.ParseVisitor(visitorObj);
