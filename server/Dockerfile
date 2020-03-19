@@ -12,7 +12,7 @@ RUN mvn install
 
 # rest of the project
 COPY src /opt/app/src
-RUN mvn package
+RUN mvn -DskipTests=true package
 
 # local application port
 EXPOSE 8080
