@@ -60,13 +60,13 @@ const Search = props => (
 
 Search.getInitialProps = async function(context) {
     const { keyword } = context.query;
-    const res_park = await fetch(`http://localhost:8080/parkpay/parks?key=${keyword}`);
+    const res_park = await fetch(`http://165.227.90.43:8080/parkpay/parks?key=${keyword}`);
     const parks = await res_park.json();
-    const res_note = await fetch(`http://localhost:8080/parkpay/notes?key=${keyword}`);
+    const res_note = await fetch(`http://165.227.90.43:8080/parkpay/notes?key=${keyword}`);
     const notes = await res_note.json();
-    const res_order = await fetch(`http://localhost:8080/parkpay/notes?key=${keyword}`);
+    const res_order = await fetch(`http://165.227.90.43:8080/parkpay/notes?key=${keyword}`);
     const orders = await res_order.json(); 
-    const res_visitor = await fetch(`http://localhost:8080/parkpay/visitors?key=${keyword}`);
+    const res_visitor = await fetch(`http://165.227.90.43:8080/parkpay/visitors?key=${keyword}`);
     const visitors = await res_visitor.json()
     return { keyword, parks, orders, visitors, notes };
 };

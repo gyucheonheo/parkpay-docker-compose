@@ -39,7 +39,7 @@ const Parks = props => (
                       <button type="button" className="btn btn-danger" onClick={
                           event => {
                           event.preventDefault();
-                          axios.delete(`http://localhost:8080/parkpay/parks/${park.pid}`)
+                          axios.delete(`http://165.227.90.43:8080/parkpay/parks/${park.pid}`)
                           .then(()=>{
                             Router.push('/parks')
                           })
@@ -62,7 +62,7 @@ const Parks = props => (
 );
 
 Parks.getInitialProps = async function() {
-  const res = await fetch('http://localhost:8080/parkpay/parks');
+  const res = await fetch('http://165.227.90.43:8080/parkpay/parks');
   const data = await res.json();
 
   return {

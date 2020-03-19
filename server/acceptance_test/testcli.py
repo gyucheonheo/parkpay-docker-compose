@@ -2,7 +2,7 @@ import json, re
 import requests
 from datetime import datetime
 
-BASE_URL = 'http://localhost:8080/parkpay'
+BASE_URL = 'http://165.227.90.43:8080/parkpay'
 
 # 18, 31
 tests = [

@@ -45,7 +45,7 @@ const Visitors = props => (
 );
 
 Visitors.getInitialProps = async function(context) {
-  const res = await fetch(`http://localhost:8080/parkpay/visitors`);
+  const res = await fetch(`http://165.227.90.43:8080/parkpay/visitors`);
   const visitors = await res.json();
 
   return { visitors };

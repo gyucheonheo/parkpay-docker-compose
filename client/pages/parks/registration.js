@@ -29,7 +29,7 @@ export default class Registration extends React.Component {
     handleSubmit = event => {
         event.preventDefault();
 
-        axios.post(`http://localhost:8080/parkpay/parks`,
+        axios.post(`http://165.227.90.43:8080/parkpay/parks`,
         {            
             location_info:{
             name : this.state.name,

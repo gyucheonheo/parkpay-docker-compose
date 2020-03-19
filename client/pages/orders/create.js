@@ -22,7 +22,7 @@ export default class Createorder extends React.Component {
     }
 
     componentDidMount(){
-        axios.get(`http://localhost:8080/parkpay/parks`)
+        axios.get(`http://165.227.90.43:8080/parkpay/parks`)
         .then(res => {
             this.setState({
                 parks_data : res.data 
@@ -35,7 +35,7 @@ export default class Createorder extends React.Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        axios.post(`http://localhost:8080/parkpay/orders`,
+        axios.post(`http://165.227.90.43:8080/parkpay/orders`,
         {            
             pid : this.state.pid,
             vehicle:{

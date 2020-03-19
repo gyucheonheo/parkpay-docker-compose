@@ -42,7 +42,7 @@ const Order = props => (
 
 Order.getInitialProps = async function(context) {
   const { id } = context.query;
-  const res = await fetch(`http://localhost:8080/parkpay/orders/${id}`);
+  const res = await fetch(`http://165.227.90.43:8080/parkpay/orders/${id}`);
   const order = await res.json();
 
   return { order };

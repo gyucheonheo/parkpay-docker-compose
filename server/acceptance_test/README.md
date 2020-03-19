@@ -24,7 +24,7 @@ sudo pip3 install requests
 
 1. Start the server.
 
-  The base URL is [http://localhost:8080/parkpay][2].
+  The base URL is [http://165.227.90.43:8080/parkpay][2].
 
 2. Run the test script.
 
@@ -33,4 +33,4 @@ sudo pip3 install requests
   ```
 
 [1]: http://gauss.cs.iit.edu/~virgil/cs445/mail.fall2018/project/project-functional-testing-instructions.html
-[2]: http://localhost:8080/parkpay
+[2]: http://165.227.90.43:8080/parkpay

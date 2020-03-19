@@ -8,7 +8,7 @@ import Router from 'next/router';
 export default class UpdatePark extends React.Component {
     static async getInitialProps(context){
         const { id } = context.query;
-        const res = await fetch(`http://localhost:8080/parkpay/parks/${id}`);
+        const res = await fetch(`http://165.227.90.43:8080/parkpay/parks/${id}`);
         const park = await res.json();
 
         return { park , id};
@@ -57,7 +57,7 @@ export default class UpdatePark extends React.Component {
     handleSubmit = event => {
         event.preventDefault();
 
-        axios.put(`http://localhost:8080/parkpay/parks/${this.state.pid}`,
+        axios.put(`http://165.227.90.43:8080/parkpay/parks/${this.state.pid}`,
         {            
             location_info:{
             name : this.state.name,

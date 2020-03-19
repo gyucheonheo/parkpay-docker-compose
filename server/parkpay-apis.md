@@ -92,7 +92,7 @@ To make examples easier to read we will be using the following abbreviations thr
     * In this case the response body will look like
       ``` JSON 
       {
-        "type": "http://localhost:8080/parkpay/validation",
+        "type": "http://165.227.90.43:8080/parkpay/validation",
         "title": "Your request data didn't pass validation",
         "detail": "Geo information is required but missing in your request",
         "status": 400,
@@ -159,7 +159,7 @@ To make examples easier to read we will be using the following abbreviations thr
     * In this case the body will looks like this:
       ``` JSON 
       {
-        "type": "http://localhost:8080/parkpay/validation",
+        "type": "http://165.227.90.43:8080/parkpay/validation",
         "title": "Your request data didn't pass validation",
         "detail": "Geo information is required but missing in your request",
         "status": 400,
@@ -261,7 +261,7 @@ To make examples easier to read we will be using the following abbreviations thr
       * *key*(required) : the search key. Anything that matches the keyword (the value of key) will be included in the result set. The search is case insensitive. If the keyword is emtpy, the match everything.
     * Example Request
       ``` 
-      GET http://localhost:8080/parkpay/parks?key=south
+      GET http://165.227.90.43:8080/parkpay/parks?key=south
       ```
     * Example Response
       ``` JSON
@@ -290,7 +290,7 @@ To make examples easier to read we will be using the following abbreviations thr
       * None
     * Example Request
     ```
-      GET http://localhost:8080/parkpay/parks/124/notes
+      GET http://165.227.90.43:8080/parkpay/parks/124/notes
     ```
     * Example Response
     ``` JSON
@@ -318,7 +318,7 @@ To make examples easier to read we will be using the following abbreviations thr
       * None
     * Example Request
       ```
-        GET http://localhost:8080/parkpay/parks/124/notes/583
+        GET http://165.227.90.43:8080/parkpay/parks/124/notes/583
       ```
     * Example Response
       ``` JSON
@@ -346,7 +346,7 @@ To make examples easier to read we will be using the following abbreviations thr
       * text (required): detailed note
     * Example Request
       ``` 
-      POST http://localhost:8080/parkpay/parks/124/notes
+      POST http://165.227.90.43:8080/parkpay/parks/124/notes
       ```
     * Data with Request
       ``` JSON
@@ -374,7 +374,7 @@ To make examples easier to read we will be using the following abbreviations thr
       In this case the reponse body will look like this :
       ``` JSON
       {
-        "type": "http://localhost:8080/parkpay/validation",
+        "type": "http://165.227.90.43:8080/parkpay/validation",
         "title": "Your request data didn't pass validation",
         "detail": "You may not post a note to a park unless you paid for admission at that park",
         "status": 400,
@@ -392,7 +392,7 @@ To make examples easier to read we will be using the following abbreviations thr
     * None
    * Example Request
    ```
-    GET http://localhost:8080/parkpay/notes
+    GET http://165.227.90.43:8080/parkpay/notes
    ```
   * Example Response
   ``` JSON 
@@ -435,7 +435,7 @@ To make examples easier to read we will be using the following abbreviations thr
       * None
     * Example Request
       ```
-        GET http://localhost:8080/parkpay/notes/317
+        GET http://165.227.90.43:8080/parkpay/notes/317
       ```
     * Example Response
       ``` JSON
@@ -462,7 +462,7 @@ To make examples easier to read we will be using the following abbreviations thr
       * text (required): detailed note
     * Example Request
       ```
-      PUT http://localhost:8080/parkpay/notes/317
+      PUT http://165.227.90.43:8080/parkpay/notes/317
       ```
 
       ``` JSON
@@ -484,7 +484,7 @@ To make examples easier to read we will be using the following abbreviations thr
       * key (required): the search key. Anything that matches the keyword (the value of key) will be included in the result set. The search is case insensitive. If keyword is empty, then match everything.
     * Example Request
     ```
-      GET http://localhost:8080/parkpay/notes?key=FISH
+      GET http://165.227.90.43:8080/parkpay/notes?key=FISH
     ```
     * Example Response
     ``` JSON
@@ -537,7 +537,7 @@ To make examples easier to read we will be using the following abbreviations thr
       * zip (required): Billing address zip code.
   * Example Request
     ```
-    POST http://localhost:8080/parkpay/orders
+    POST http://165.227.90.43:8080/parkpay/orders
     ```
     ``` JSON
     {
@@ -568,7 +568,7 @@ To make examples easier to read we will be using the following abbreviations thr
   
   * Example Request
     ```
-      POST http://localhost:8080/parkpay/orders
+      POST http://165.227.90.43:8080/parkpay/orders
     ```
     ``` JSON
     {
@@ -622,7 +622,7 @@ Let's assume that the following data is being POST-ed and that the credit card p
   * In this case the response body may look like this:
     ``` JSON
       {
-        "type": "http://localhost:8080/parkpay/validation",
+        "type": "http://165.227.90.43:8080/parkpay/validation",
         "title": "There has been an error processing your request.",
         "detail": "Credit card transaction declined.",
         "status": 400,
@@ -640,7 +640,7 @@ Let's assume that the following data is being POST-ed and that the credit card p
       * None
   * Example Request
   ```
-    GET http://localhost:8080/parkpay/orders
+    GET http://165.227.90.43:8080/parkpay/orders
   ```
   * Example Response
   ``` JSON
@@ -686,7 +686,7 @@ Let's assume that the following data is being POST-ed and that the credit card p
       * None
     * Example Request
     ```
-    GET http://localhost:8080/parkpay/orders/751
+    GET http://165.227.90.43:8080/parkpay/orders/751
     ```
     * Example Response
     ``` JSON
@@ -727,7 +727,7 @@ Let's assume that the following data is being POST-ed and that the credit card p
       * key (required): the search key. Anything that matches the keyword (the value of key) will be included in the result set. The search is case insensitive. If keyword is empty, then match everything.
     * Example Request
     ```
-    GET http://localhost:8080/parkpay/orders?key=60MPG
+    GET http://165.227.90.43:8080/parkpay/orders?key=60MPG
     ```
     * Example Response
     ``` JSON
@@ -750,7 +750,7 @@ Let's assume that the following data is being POST-ed and that the credit card p
     ```
   * Another Example Request
   ```
-    GET http://localhost:8080/parkpay/orders?key=john.doe
+    GET http://165.227.90.43:8080/parkpay/orders?key=john.doe
   ```
   
   * Example Response
@@ -776,7 +776,7 @@ Let's assume that the following data is being POST-ed and that the credit card p
       * None
     * Example Request
     ```
-    GET http://localhost:8080/parkpay/visitors
+    GET http://165.227.90.43:8080/parkpay/visitors
     ```
     * Example Response
     ``` JSON
@@ -809,7 +809,7 @@ Let's assume that the following data is being POST-ed and that the credit card p
       * None
     * Example Request
     ```
-    GET http://localhost:8080/parkpay/visitors/447
+    GET http://165.227.90.43:8080/parkpay/visitors/447
     ```
     * Example Response
     ``` JSON
@@ -848,7 +848,7 @@ Let's assume that the following data is being POST-ed and that the credit card p
       * key (required): the search key. Anything that matches the keyword (the value of key) will be included in the result set. The search is case insensitive. If keyword is empty, then match everything.
     * Example Request
     ```
-    GET http://localhost:8080/parkpay/visitors?key=John
+    GET http://165.227.90.43:8080/parkpay/visitors?key=John
     ```
     * Example Response
     ``` JSON
@@ -877,7 +877,7 @@ Let's assume that the following data is being POST-ed and that the credit card p
       * None.
     * Example Request
     ```
-    GET http://localhost:8080/parkpay/reports
+    GET http://165.227.90.43:8080/parkpay/reports
     ```
     * Example Response
     ``` JSON
@@ -905,7 +905,7 @@ Let's assume that the following data is being POST-ed and that the credit card p
     * end_date (optional): the end date for the date range of the report.
   * Example Request
     ```
-    GET http://localhost:8080/parkpay/reports/907
+    GET http://165.227.90.43:8080/parkpay/reports/907
     ```
   
   * Example Response
@@ -936,7 +936,7 @@ Let's assume that the following data is being POST-ed and that the credit card p
   ```
   * Another Example Request
   ```
-    GET http://localhost:8080/parkpay/reports/911?start_date=20180701&end_date=20180731
+    GET http://165.227.90.43:8080/parkpay/reports/911?start_date=20180701&end_date=20180731
   ```
   
   * Example Response
@@ -983,7 +983,7 @@ Let's assume that the following data is being POST-ed and that the credit card p
       * end_date (optional): the end date for the date range of the report.
   * Example Request
     ```
-    GET http://localhost:8080/parkpay/search?key=&start_date=20180802&end_date=20180802
+    GET http://165.227.90.43:8080/parkpay/search?key=&start_date=20180802&end_date=20180802
     ```
   
   

@@ -22,5 +22,5 @@
     "react-slick": "^0.25.2",
     "typeface-roboto": "0.0.75"
   },
-  "proxy": "http://localhost:8080"
+  "proxy": "http://165.227.90.43/:8080"
 }

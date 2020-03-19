@@ -14,7 +14,7 @@ const Note = props => (
 Note.getInitialProps = async function(context) {
   const { id } = context.query;
   console.log(`${id}`)
-//   const res = await fetch(`http://localhost:8080/parkpay/parks/${id}`);
+//   const res = await fetch(`http://165.227.90.43:8080/parkpay/parks/${id}`);
 //   const notes = await res.json();
 
 //   return { notes };

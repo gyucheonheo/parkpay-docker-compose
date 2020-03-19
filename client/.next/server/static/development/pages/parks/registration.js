@@ -1,7 +1,7 @@
 module.exports =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
-/******/ 	var installedModules = require('../../../ssr-module-cache.js');
+/******/ 	var installedModules = require('../../../../ssr-module-cache.js');
 /******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2441,235 +2441,722 @@ module.exports = __webpack_require__(/*! ./dist/client/link */ "./node_modules/n
 
 /***/ }),
 
-/***/ "./pages/parks.js":
-/*!************************!*\
-  !*** ./pages/parks.js ***!
-  \************************/
+/***/ "./pages/parks/registration.js":
+/*!*************************************!*\
+  !*** ./pages/parks/registration.js ***!
+  \*************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Registration; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_MyLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/MyLayout */ "./components/MyLayout.js");
-/* harmony import */ var _components_Sidebar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Sidebar */ "./components/Sidebar.js");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! isomorphic-unfetch */ "isomorphic-unfetch");
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "axios");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! next/router */ "next/router");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_6__);
-var _jsxFileName = "/Users/gyucheonheo/Documents/parkpay-docker-compose/client/pages/parks.js";
-
+/* harmony import */ var _components_MyLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/MyLayout */ "./components/MyLayout.js");
+/* harmony import */ var _components_Sidebar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/Sidebar */ "./components/Sidebar.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "axios");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_4__);
+var _jsxFileName = "/Users/gyucheonheo/Documents/parkpay-docker-compose/client/pages/parks/registration.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
 
 
 
-const Parks = props => __jsx(_components_MyLayout__WEBPACK_IMPORTED_MODULE_1__["default"], {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 8
-  },
-  __self: undefined
-}, __jsx("div", {
-  className: "container",
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 10
-  },
-  __self: undefined
-}, __jsx("h3", {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 11
-  },
-  __self: undefined
-}, "Parks"), __jsx("div", {
-  className: "row",
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 12
-  },
-  __self: undefined
-}, __jsx("div", {
-  className: "col-md-7",
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 13
-  },
-  __self: undefined
-}, __jsx("table", {
-  className: "table",
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 14
-  },
-  __self: undefined
-}, __jsx("thead", {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 15
-  },
-  __self: undefined
-}, __jsx("tr", {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 16
-  },
-  __self: undefined
-}, __jsx("th", {
-  scope: "col",
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 17
-  },
-  __self: undefined
-}, "Name"), __jsx("th", {
-  scope: "col",
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 18
-  },
-  __self: undefined
-}, "Region"), __jsx("th", {
-  scope: "col",
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 19
-  },
-  __self: undefined
-}, "Actions"))), __jsx("tbody", {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 22
-  },
-  __self: undefined
-}, props.parks.map(park => __jsx("tr", {
-  key: park.pid,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 24
-  },
-  __self: undefined
-}, __jsx("td", {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 25
-  },
-  __self: undefined
-}, __jsx("a", {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 26
-  },
-  __self: undefined
-}, park.location_info.name)), __jsx("td", {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 28
-  },
-  __self: undefined
-}, __jsx("a", {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 29
-  },
-  __self: undefined
-}, park.location_info.region)), __jsx("td", {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 31
-  },
-  __self: undefined
-}, __jsx(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
-  href: "/parks/[id]",
-  as: `/parks/${park.pid}`,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 32
-  },
-  __self: undefined
-}, __jsx("a", {
-  role: "button",
-  className: "btn btn-info",
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 33
-  },
-  __self: undefined
-}, "View")), __jsx("span", {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 35
-  },
-  __self: undefined
-}), __jsx(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
-  href: "/parks/update/[id]",
-  as: `/parks/update/${park.pid}`,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 36
-  },
-  __self: undefined
-}, __jsx("button", {
-  type: "button",
-  className: "btn btn-success",
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 37
-  },
-  __self: undefined
-}, "Update")), __jsx("button", {
-  type: "button",
-  className: "btn btn-danger",
-  onClick: event => {
-    event.preventDefault();
-    axios__WEBPACK_IMPORTED_MODULE_5___default.a.delete(`http://165.227.90.43:8080/parkpay/parks/${park.pid}`).then(() => {
-      next_router__WEBPACK_IMPORTED_MODULE_6___default.a.push('/parks');
-    }).catch(err => {
-      console.log(err);
+class Registration extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
+  constructor(...args) {
+    super(...args);
+
+    _defineProperty(this, "state", {
+      name: '',
+      region: '',
+      address: '',
+      phone: '',
+      web: '',
+      lat: 0.0,
+      lng: 0.0,
+      motorcycle_in_state: 0,
+      motorcycle_out_state: 0,
+      car_in_state: 0,
+      car_out_state: 0,
+      rv_in_state: 0,
+      rv_out_state: 0,
+      errors: {}
     });
-  },
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 39
-  },
-  __self: undefined
-}, "Delete"))))))), __jsx(_components_Sidebar__WEBPACK_IMPORTED_MODULE_2__["default"], {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 58
-  },
-  __self: undefined
-}))));
 
-Parks.getInitialProps = async function () {
-  const res = await isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_4___default()('http://165.227.90.43:8080/parkpay/parks');
-  const data = await res.json();
-  return {
-    parks: data
-  };
-};
+    _defineProperty(this, "handleChange", event => {
+      this.setState({
+        [event.target.name]: event.target.value
+      });
+    });
 
-/* harmony default export */ __webpack_exports__["default"] = (Parks);
+    _defineProperty(this, "handleSubmit", event => {
+      event.preventDefault();
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post(`http://165.227.90.43:8080/parkpay/parks`, {
+        location_info: {
+          name: this.state.name,
+          region: this.state.region,
+          address: this.state.address,
+          phone: this.state.phone,
+          web: this.state.web,
+          geo: {
+            lat: this.state.lat,
+            lng: this.state.lng
+          }
+        },
+        payment_info: {
+          motorcycle: [this.state.motorcycle_in_state, this.state.motorcycle_out_state],
+          car: [this.state.car_in_state, this.state.car_out_state],
+          rv: [this.state.rv_in_state, this.state.rv_out_state]
+        }
+      }).then(res => {
+        // Redirect...!
+        next_router__WEBPACK_IMPORTED_MODULE_4___default.a.push('/parks');
+      }).catch(err => {
+        if (err.response.status == 400) {
+          this.setState({
+            errors: err.response.data.detail
+          });
+        }
+      });
+    });
+  }
+
+  render() {
+    return __jsx(_components_MyLayout__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 65
+      },
+      __self: this
+    }, __jsx("div", {
+      className: "row",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 66
+      },
+      __self: this
+    }, __jsx("div", {
+      className: "col-md-7",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 67
+      },
+      __self: this
+    }, __jsx("h3", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 68
+      },
+      __self: this
+    }, "Register new park"), __jsx("form", {
+      onSubmit: this.handleSubmit,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 69
+      },
+      __self: this
+    }, __jsx("div", {
+      className: "form-group",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 70
+      },
+      __self: this
+    }, __jsx("label", {
+      htmlFor: "exampleInputEmail1",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 71
+      },
+      __self: this
+    }, "Park Name"), __jsx("input", {
+      className: "form-control",
+      type: "text",
+      name: "name",
+      value: this.state.name,
+      onChange: this.handleChange,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 72
+      },
+      __self: this
+    }), this.state.errors.name && __jsx("small", {
+      id: "emailHelp",
+      className: "form-text text-danger",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 73
+      },
+      __self: this
+    }, this.state.errors.name)), __jsx("div", {
+      className: "form-group",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 75
+      },
+      __self: this
+    }, __jsx("label", {
+      htmlFor: "exampleInputEmail1",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 76
+      },
+      __self: this
+    }, "Region"), __jsx("input", {
+      className: "form-control",
+      type: "text",
+      name: "region",
+      value: this.state.region,
+      onChange: this.handleChange,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 77
+      },
+      __self: this
+    }), this.state.errors.region && __jsx("small", {
+      id: "emailHelp",
+      className: "form-text text-danger",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 78
+      },
+      __self: this
+    }, this.state.errors.region), __jsx("small", {
+      id: "emailHelp",
+      className: "form-text text-muted",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 79
+      },
+      __self: this
+    }, "Optional")), __jsx("div", {
+      className: "form-group",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 81
+      },
+      __self: this
+    }, __jsx("label", {
+      htmlFor: "exampleInputEmail1",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 82
+      },
+      __self: this
+    }, "Address"), __jsx("input", {
+      className: "form-control",
+      type: "text",
+      name: "address",
+      value: this.state.address,
+      onChange: this.handleChange,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 83
+      },
+      __self: this
+    }), this.state.errors.address && __jsx("small", {
+      id: "emailHelp",
+      className: "form-text text-danger",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 84
+      },
+      __self: this
+    }, this.state.errors.address), __jsx("small", {
+      id: "emailHelp",
+      className: "form-text text-muted",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 85
+      },
+      __self: this
+    }, "Required")), __jsx("div", {
+      className: "form-group",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 87
+      },
+      __self: this
+    }, __jsx("label", {
+      htmlFor: "exampleInputEmail1",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 88
+      },
+      __self: this
+    }, "Phone"), __jsx("input", {
+      className: "form-control",
+      type: "text",
+      name: "phone",
+      value: this.state.phone,
+      onChange: this.handleChange,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 89
+      },
+      __self: this
+    }), this.state.errors.phone && __jsx("small", {
+      id: "emailHelp",
+      className: "form-text text-danger",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 90
+      },
+      __self: this
+    }, this.state.errors.phone), __jsx("small", {
+      id: "emailHelp",
+      className: "form-text text-muted",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 92
+      },
+      __self: this
+    }, "Optional")), __jsx("div", {
+      className: "form-group",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 94
+      },
+      __self: this
+    }, __jsx("label", {
+      htmlFor: "exampleInputEmail1",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 95
+      },
+      __self: this
+    }, "Web"), __jsx("input", {
+      className: "form-control",
+      type: "text",
+      name: "web",
+      value: this.state.web,
+      onChange: this.handleChange,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 96
+      },
+      __self: this
+    }), this.state.errors.web && __jsx("small", {
+      id: "emailHelp",
+      className: "form-text text-danger",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 97
+      },
+      __self: this
+    }, this.state.errors.web), __jsx("small", {
+      id: "emailHelp",
+      className: "form-text text-muted",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 99
+      },
+      __self: this
+    }, "Required.")), __jsx("h4", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 101
+      },
+      __self: this
+    }, " Geographical Information"), __jsx("div", {
+      className: "form-row",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 102
+      },
+      __self: this
+    }, __jsx("div", {
+      className: "form-group col-md-6",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 103
+      },
+      __self: this
+    }, __jsx("label", {
+      htmlFor: "inputEmail4",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 104
+      },
+      __self: this
+    }, "Latitude"), __jsx("input", {
+      className: "form-control",
+      type: "text",
+      name: "lat",
+      value: this.state.lat,
+      onChange: this.handleChange,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 105
+      },
+      __self: this
+    }), this.state.errors.lat && __jsx("small", {
+      id: "emailHelp",
+      className: "form-text text-danger",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 106
+      },
+      __self: this
+    }, this.state.errors.lat), __jsx("small", {
+      id: "emailHelp",
+      className: "form-text text-muted",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 108
+      },
+      __self: this
+    }, "Required.")), __jsx("div", {
+      className: "form-group col-md-6",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 110
+      },
+      __self: this
+    }, __jsx("label", {
+      htmlFor: "inputPassword4",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 111
+      },
+      __self: this
+    }, "Longitude"), __jsx("input", {
+      className: "form-control",
+      type: "text",
+      name: "lng",
+      value: this.state.lng,
+      onChange: this.handleChange,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 112
+      },
+      __self: this
+    }), this.state.errors.lng && __jsx("small", {
+      id: "emailHelp",
+      className: "form-text text-danger",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 113
+      },
+      __self: this
+    }, this.state.errors.lng), __jsx("small", {
+      id: "emailHelp",
+      className: "form-text text-muted",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 115
+      },
+      __self: this
+    }, "Required."))), __jsx("h4", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 118
+      },
+      __self: this
+    }, " Payment Information"), __jsx("div", {
+      className: "form-row",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 119
+      },
+      __self: this
+    }, __jsx("div", {
+      className: "form-group col-md-6",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 120
+      },
+      __self: this
+    }, __jsx("label", {
+      htmlFor: "exampleInputEmail1",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 121
+      },
+      __self: this
+    }, "Motorcycle(In-state)"), __jsx("input", {
+      className: "form-control",
+      type: "text",
+      name: "motorcycle_in_state",
+      value: this.state.motorcycle_in_state,
+      onChange: this.handleChange,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 122
+      },
+      __self: this
+    }), this.state.errors.motorcycle_in_state && __jsx("small", {
+      id: "emailHelp",
+      className: "form-text text-danger",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 123
+      },
+      __self: this
+    }, this.state.errors.motorcycle_in_state), __jsx("small", {
+      id: "emailHelp",
+      className: "form-text text-muted",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 125
+      },
+      __self: this
+    }, "Required")), __jsx("div", {
+      className: "form-group col-md-6",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 127
+      },
+      __self: this
+    }, __jsx("label", {
+      htmlFor: "exampleInputEmail1",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 128
+      },
+      __self: this
+    }, "Motorcycle(Out-state)"), __jsx("input", {
+      className: "form-control",
+      type: "text",
+      name: "motorcycle_out_state",
+      value: this.state.motorcycle_out_state,
+      onChange: this.handleChange,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 129
+      },
+      __self: this
+    }), this.state.errors.motorcycle_out_state && __jsx("small", {
+      id: "emailHelp",
+      className: "form-text text-danger",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 130
+      },
+      __self: this
+    }, this.state.errors.motorcycle_out_state), __jsx("small", {
+      id: "emailHelp",
+      className: "form-text text-muted",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 132
+      },
+      __self: this
+    }, "Required"))), __jsx("div", {
+      className: "form-row",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 136
+      },
+      __self: this
+    }, __jsx("div", {
+      className: "form-group col-md-6",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 137
+      },
+      __self: this
+    }, __jsx("label", {
+      htmlFor: "exampleInputEmail1",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 138
+      },
+      __self: this
+    }, "Car(In-state)"), __jsx("input", {
+      className: "form-control",
+      type: "text",
+      name: "car_in_state",
+      value: this.state.car_in_state,
+      onChange: this.handleChange,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 139
+      },
+      __self: this
+    }), this.state.errors.car_in_state && __jsx("small", {
+      id: "emailHelp",
+      className: "form-text text-danger",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 140
+      },
+      __self: this
+    }, this.state.errors.car_in_state), __jsx("small", {
+      id: "emailHelp",
+      className: "form-text text-muted",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 142
+      },
+      __self: this
+    }, "Required")), __jsx("div", {
+      className: "form-group col-md-6",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 144
+      },
+      __self: this
+    }, __jsx("label", {
+      htmlFor: "exampleInputEmail1",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 145
+      },
+      __self: this
+    }, "Car(Out-state)"), __jsx("input", {
+      className: "form-control",
+      type: "text",
+      name: "car_out_state",
+      value: this.state.car_out_state,
+      onChange: this.handleChange,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 146
+      },
+      __self: this
+    }), this.state.errors.car_out_state && __jsx("small", {
+      id: "emailHelp",
+      className: "form-text text-danger",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 147
+      },
+      __self: this
+    }, this.state.errors.car_out_state), __jsx("small", {
+      id: "emailHelp",
+      className: "form-text text-muted",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 149
+      },
+      __self: this
+    }, "Required"))), __jsx("div", {
+      className: "form-row",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 153
+      },
+      __self: this
+    }, __jsx("div", {
+      className: "form-group col-md-6",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 154
+      },
+      __self: this
+    }, __jsx("label", {
+      htmlFor: "exampleInputEmail1",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 155
+      },
+      __self: this
+    }, "RV(In-state)"), __jsx("input", {
+      className: "form-control",
+      type: "text",
+      name: "rv_in_state",
+      value: this.state.rv_in_state,
+      onChange: this.handleChange,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 156
+      },
+      __self: this
+    }), this.state.errors.rv_in_state && __jsx("small", {
+      id: "emailHelp",
+      className: "form-text text-danger",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 157
+      },
+      __self: this
+    }, this.state.errors.rv_in_state), __jsx("small", {
+      id: "emailHelp",
+      className: "form-text text-muted",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 159
+      },
+      __self: this
+    }, "Required")), __jsx("div", {
+      className: "form-group col-md-6",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 161
+      },
+      __self: this
+    }, __jsx("label", {
+      htmlFor: "exampleInputEmail1",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 162
+      },
+      __self: this
+    }, "RV(Out-state)"), __jsx("input", {
+      className: "form-control",
+      type: "text",
+      name: "rv_out_state",
+      value: this.state.rv_out_state,
+      onChange: this.handleChange,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 163
+      },
+      __self: this
+    }), this.state.errors.rv_out_state && __jsx("small", {
+      id: "emailHelp",
+      className: "form-text text-danger",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 164
+      },
+      __self: this
+    }, this.state.errors.rv_out_state), __jsx("small", {
+      id: "emailHelp",
+      className: "form-text text-muted",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 165
+      },
+      __self: this
+    }, "Required"))), __jsx("input", {
+      type: "submit",
+      className: "btn btn-primary btn-lg btn-block",
+      value: "Add Park",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 168
+      },
+      __self: this
+    }))), __jsx(_components_Sidebar__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 171
+      },
+      __self: this
+    })));
+  }
+
+}
 
 /***/ }),
 
-/***/ 5:
-/*!******************************!*\
-  !*** multi ./pages/parks.js ***!
-  \******************************/
+/***/ 3:
+/*!*******************************************!*\
+  !*** multi ./pages/parks/registration.js ***!
+  \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/gyucheonheo/Documents/parkpay-docker-compose/client/pages/parks.js */"./pages/parks.js");
+module.exports = __webpack_require__(/*! /Users/gyucheonheo/Documents/parkpay-docker-compose/client/pages/parks/registration.js */"./pages/parks/registration.js");
 
 
 /***/ }),
@@ -2682,17 +3169,6 @@ module.exports = __webpack_require__(/*! /Users/gyucheonheo/Documents/parkpay-do
 /***/ (function(module, exports) {
 
 module.exports = require("axios");
-
-/***/ }),
-
-/***/ "isomorphic-unfetch":
-/*!*************************************!*\
-  !*** external "isomorphic-unfetch" ***!
-  \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("isomorphic-unfetch");
 
 /***/ }),
 
@@ -2796,4 +3272,4 @@ module.exports = require("url");
 /***/ })
 
 /******/ });
-//# sourceMappingURL=parks.js.map
+//# sourceMappingURL=registration.js.map

@@ -88,7 +88,7 @@ const Visitor = props => (
 
 Visitor.getInitialProps = async function(context) {
   const { id } = context.query;
-  const res = await fetch(`http://localhost:8080/parkpay/visitors/${id}`);
+  const res = await fetch(`http://165.227.90.43:8080/parkpay/visitors/${id}`);
   const visitor = await res.json();
 
   return { visitor };

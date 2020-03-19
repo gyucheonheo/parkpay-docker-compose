@@ -57,7 +57,7 @@ const Orders = (props) => (
         </Layout>
 )
 Orders.getInitialProps = async function(context) {
-  const res = await fetch(`http://localhost:8080/parkpay/orders`);
+  const res = await fetch(`http://165.227.90.43:8080/parkpay/orders`);
   const orders = await res.json();
 
   return { orders };
