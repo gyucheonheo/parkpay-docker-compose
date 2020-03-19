@@ -48,7 +48,11 @@ public class CommentController {
 		if(c.isNil()) {
 			return Response.status(Response.Status.NOT_FOUND).entity("nid Not found :" + nid).build();
 		}
-		String s = gson.toJson(c);
+		JsonObject noteByNid = new JsonObject();
+		noteByNid.addProperty("vid", c.getVid());
+		noteByNid.addProperty("title", c.getTitle());
+		noteByNid.addProperty("text", c.getText());
+		String s = gson.toJson(noteByNid);
 		return Response.status(Response.Status.OK).entity(s).build();
 	}
 	

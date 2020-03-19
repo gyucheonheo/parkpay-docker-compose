@@ -2,8 +2,13 @@ package edu.iit.cs445.gheo1.manager;
 
 import edu.iit.cs445.gheo1.boundary.CommentBoundary;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -54,26 +59,41 @@ public class CommentManager extends ParkManager implements CommentBoundary{
 
 	private JsonArray getCommentOrientedByPid(List<Comment> comments) {
 		JsonArray commentSetsForEachPid = new JsonArray();
+		Map<String, JsonArray> pids = new HashMap<>();		
 		for(Comment c : comments) {
-			JsonObject commentObj = new JsonObject();
 
-			commentObj.addProperty("pid", c.getPid());
-			List<Comment> noteSetsByPid = findCommentByPid(c.getPid());
-			JsonArray noteSetsJsonArray = getSimpleComment(noteSetsByPid, c.getPid());
-			commentObj.add("notes", noteSetsJsonArray);
-
-			if(!commentSetsForEachPid.contains(commentObj)) {
-				commentSetsForEachPid.add(commentObj);
+			if(!pids.containsKey(c.getPid())){
+				JsonObject simpleNote = new JsonObject();
+				simpleNote.addProperty("nid", c.getNid());
+				simpleNote.addProperty("date", c.getDate());
+				simpleNote.addProperty("title", c.getTitle());
+				pids.put(c.getPid(), new JsonArray());
+				pids.get(c.getPid()).add(simpleNote);
 			}
+			else {
+				JsonObject simpleNote = new JsonObject();
+				simpleNote.addProperty("nid", c.getNid());
+				simpleNote.addProperty("date", c.getDate());
+				simpleNote.addProperty("title", c.getTitle());
+				pids.get(c.getPid()).add(simpleNote);
+			}
+		}
+		
+		for(Entry<String, JsonArray> sets : pids.entrySet()) {
+			JsonObject notesForPid = new JsonObject();
+			notesForPid.addProperty("pid", sets.getKey());
+			notesForPid.add("notes", sets.getValue());
+			commentSetsForEachPid.add(notesForPid);
 		}
 
 		return commentSetsForEachPid;
 	}
 
     private JsonArray getSimpleComment(List<Comment> comments, String pid) {
-	JsonObject result = new JsonObject();
-	JsonArray notes = new JsonArray();
-	JsonArray commentSets = new JsonArray();
+		JsonObject result = new JsonObject();
+		JsonArray notes = new JsonArray();
+		JsonArray commentSets = new JsonArray();
+		result.addProperty("pid", pid);
 		for(Comment c : comments) {
 			JsonObject comment = new JsonObject();
 
@@ -84,7 +104,7 @@ public class CommentManager extends ParkManager implements CommentBoundary{
 			commentSets.add(comment);
 		}
 		result.add("notes", commentSets);
-		result.addProperty("pid", pid);
+
 		notes.add(result);
 		return notes;
 	}

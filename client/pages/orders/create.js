@@ -1,7 +1,6 @@
 import React from 'react'
 import Layout from '../../components/MyLayout'
 import Sidebar from '../../components/Sidebar';
-import Alert from '../../components/Alert'
 import axios from 'axios'
 import Router from 'next/router';
 
