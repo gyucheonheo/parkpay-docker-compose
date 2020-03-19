@@ -22,7 +22,7 @@ const Reports = props => (
 );
 
 Reports.getInitialProps = async function(context) {
-  const res = await fetch(`http://localhost:8080/parkpay/reports`);
+  const res = await fetch(`http://165.227.90.43:8000/parkpay/reports`);
   const reports = await res.json();
 
   return { reports };

@@ -1,13 +1,20 @@
-FROM node:10
+FROM node:alpine
 
-RUN mkdir -p /srv/app/parkpay-admin-client
-WORKDIR /srv/app/parkpay-admin-client
+RUN mkdir -p /opt/client 
+RUN apk add --no-cache libc6-compat
+ENV NODE_ENV production
+ENV PORT 3000
 
-COPY package*.json ./ 
+VOLUME /opt/client
 
-RUN npm install
+WORKDIR /opt/client
 
-COPY . .
+COPY package.json /opt/client 
+COPY package-lock.json /opt/client
+
+RUN npm install --no-optional
+
+COPY . /opt/client 
 
 RUN npm run build
 
